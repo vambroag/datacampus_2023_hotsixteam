@@ -4,7 +4,7 @@ The code in question has also removed the configuration for database access.
 
 Development Teams:
 - Design / Frontend: 박수현( ) 문기태( ) 박종현()
-- AI, Backend: 이정엽( ) 정여진( ) 최경태(Goddohi)
+- AI, Backend: 이정엽( ) 정여진(Jini-lab) 최경태(Goddohi)
 - Project Management for Each part: 최경태(Goddohi) 문기태 ( ) 박수현 ( ) 이정엽( ) 
 
 KOR
@@ -13,6 +13,6 @@ KOR
 
 개발 파트
 - 디자인 / 프론트 :  박수현( ) 문기태( ) 박종현()
-- AI, 백엔드 : 이정엽( ) 정여진( ) 최경태(Goddohi)
+- AI, 백엔드 : 이정엽( ) 정여진(Jini-lab) 최경태(Goddohi)
 - 각 파트별 최종 담당자 : 최경태(GOddohi) 문기태 ( ) 박수현 ( ) 이정엽( ) 
 
