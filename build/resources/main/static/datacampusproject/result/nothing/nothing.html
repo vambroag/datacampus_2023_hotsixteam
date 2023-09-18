@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과화면</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // function goToNextPage() {
+        //     var nicknameField = document.querySelector('.weight_container');
+        //     if (nicknameField.value === '' || nicknameField.value === nicknameField.getAttribute('placeholder')) {
+        //         alert('성별을 선택해주세요.');
+        //     } else {
+        //         // 여기에 다음 페이지로 이동하는 로직을 추가할 수 있습니다.
+        //         // 예를 들어 window.location.href = "다음 페이지 URL";
+        //     }
+        // }
+    </script>
+</head>
+
+<body>
+    <div class="background">
+        <div class="window">
+            <div class="toparea">
+                <div class="topblock"></div>
+                <p class="titletext">학식쓰</p>
+            </div>
+            <p class="q_text1">정신차려<br>이 각박한 세상 속에서</p>
+            <p class="q_text2">아무것도없지니</p>
+            <img src="../../img/nothing.png" alt="사진티콘" class="zero_power_image">
+            <p class="user" id="user">???님의</p>
+            <h2 class="how_much" id="how_much">영양 상태는</h2>
+            <h3 class="expect">형편이 없군요</h3>
+            <div class="caution_container">
+                <h4 class="caution">종합비타민 복용시 주의 사항</h4>
+                <div class="with_doctor_container">
+                    <h4 class="with_doctor">의료 전문가의 지시를 따르세요</h4>
+                    <h5 class="with_doctor_about">영양제 보충을 시작하기 전에<br>의사,약사 등의 의료 전문가와 상담하세요</h5>
+                </div>
+                <div class="interaction_container">
+                    <h4 class="interaction">약물 상호 작용을 확인하세요</h4>
+                    <h5 class="interaction_about">영양제 보충을 시작하기 전에<br>약물 상호 작용 가능성을 확인하세요</h5>
+                </div>
+                <div class="eat_safety_container">
+                    <h4 class="eat_safety">권장 복용량을 준수해주세요</h4>
+                    <h5 class="eat_safety_about">비타민을 과다 섭취하면<br>부작용이 발생할 수 있습니다</h5>
+                </div>
+            </div>
+
+            <div class="recommend_container">
+                <h4 class="recommend">추천 건강기능식품</h4>
+                <img src="../../img/vitamin_recommend1.png" alt="추천상품1" class="v_recommend1">
+                <img src="../../img/vitamin_recommend2.png" alt="추천상품2" class="v_recommend2">
+                <img src="../../img/vitamin_recommend3.png" alt="추천상품3" class="v_recommend3">
+            </div>
+
+
+            <div class="recommend_name">
+                <div class="recommend1_name_container">
+                    <h3 class="recommend1_name">Life Extention<br>투 퍼 데이 종합 비타민</h3>
+                </div>
+                <div class="recommend2_name_container">
+                    <h3 class="recommend2_name">Nature's Way<br>Alive! Once Daily</h3>
+                </div>
+                <div class="recommend3_name_container">
+                    <h3 class="recommend3_name">NOW Foods<br>아담<br>슈퍼리어 남성용 멀티</h3>
+                </div>
+            </div>
+
+            <div class="yes_or_no">
+                <h4 class="T_F">증상이 맞는 것 같나요?</h4>
+                <div class="yes_button" onclick="location.href = '../../index.html';">
+                    <p class="yes">Yes</p>
+                </div>
+                <div class="no_button" onclick="location.href = '../../index.html';">
+                    <p class="no">No</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function GetParameterValues(param) {
+                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < url.length; i++) {
+                    var urlparam = url[i].split('=');
+                    if (urlparam[0] == param) {
+                        return urlparam[1];
+                    }
+                }
+            }
+
+            var pname = GetParameterValues('nickname');
+            let string1 = pname + "님의";
+            document.getElementById("user").innerText = string1;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>알약지니</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="background">
+        <form class="form_win" id="form_win" method="post">
+            <div class="window">
+                <div class="toparea_v1" id="toparea_v1">
+                    <p class="titletext">학식쓰</p>
+                </div>
+                <!-- --------------------------bottomarea1-------------------------- -->
+                <div class="bottomarea" id="bottomarea1">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar1"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container1">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1">1/5</p>
+                    <p class="q_text2">이름을 기입해주세요</p>
+                    <input class="nickname" id="nickname" type="text" name="nickname" value="" placeholder="홍길동"
+                        onkeypress="return nicknameValidateInput(event)">
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton1" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton1" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea2-------------------------- -->
+                <div class="bottomarea" id="bottomarea2" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar2"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container2">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1">2/5</p>
+                    <p class="q_text2">생년월일을 기입해주세요</p>
+                    <input type="number" onkeypress="return birthdayValidateInput(event)" placeholder="20000101"
+                        class="birthday" id="birthday" name="birthday" value="" onfocus="this.placeholder=''"
+                        onblur="this.placeholder='20000101'">
+                    <input id="age" name="age" type="text" value="" style="display:none;">
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton2" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton2" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea3-------------------------- -->
+                <div class="bottomarea" id="bottomarea3" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar3"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container3">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1">3/5</p>
+                    <p class="q_text2">키를 기입해주세요</p>
+                    <input type="number" onkeypress="return heightValidateInput(event)" placeholder="456" class="height"
+                        id="height" name="pheight" value="" onfocus="this.placeholder=''" onblur="this.placeholder='456'">
+                    <p class="q_text3">cm</p>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton3" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton3" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea4-------------------------- -->
+                <div class="bottomarea" id="bottomarea4" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar4"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container4">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1">4/5</p>
+                    <p class="q_text2">몸무게를 기입해주세요</p>
+                    <input type="number" onkeypress="return weightValidateInput(event)" placeholder="456" class="weight"
+                        id="weight" name="pweight" value="" onfocus="this.placeholder=''" onblur="this.placeholder='456'">
+                    <p class="q_text3">kg</p>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton4" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton4" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea5-------------------------- -->
+                <div class="bottomarea" id="bottomarea5" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar5"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container5">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1">5/5</p>
+                    <p class="q_text2">성별을 선택해주세요</p>
+                    <div class="gender_container">
+                        <input class="man" id="man" type="text" value="남자" readonly>
+                        <input class="woman" id="woman" type="text" value="여자" readonly>
+                        <input id="gender" name="gender" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton5" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton5" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea6-------------------------- -->
+                <div class="bottomarea" id="bottomarea6" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar6"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container6">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">1/17</p>
+                    <p class="q_text2_v1">주로 앉아서 하는 일을 하십니까?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_sit1" type="text" value="하루 0~2시간" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_sit2" type="text" value="하루 2~6시간" readonly></input>
+                        <input class="question_v1" id="q_sit3" type="text" value="하루 7~11시간" readonly></input>
+                        <input class="question_v1" id="q_sit4" type="text" value="하루 12시간 이상" readonly></input>
+                        <input class="question_v1" id="q_sit5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_sit" name="q_sit" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton6" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton6" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea7-------------------------- -->
+                <div class="bottomarea" id="bottomarea7" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar7"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container7">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">2/17</p>
+                    <p class="q_text2_v2">일주일에 몇 번 운동하시나요?<br>(하루 60분 이상 기준)?</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_exercise1" type="text" value="0번" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_exercise2" type="text" value="1~2번" readonly></input>
+                        <input class="question_v2" id="q_exercise3" type="text" value="3~4번" readonly></input>
+                        <input class="question_v2" id="q_exercise4" type="text" value="5~6번" readonly></input>
+                        <input class="question_v2" id="q_exercise5" type="text" value="매일" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_exercise" name="q_exercise" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton7" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton7" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea8-------------------------- -->
+                <div class="bottomarea" id="bottomarea8" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar8"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container8">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">3/17</p>
+                    <p class="q_text2_v2">하루에 물을 몇 컵 정도 마시나요?<br>(종이컵(200ml) 기준)</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_drink1" type="text" value="0~2컵" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_drink2" type="text" value="3~4컵" readonly></input>
+                        <input class="question_v2" id="q_drink3" type="text" value="5~6컵" readonly></input>
+                        <input class="question_v2" id="q_drink4" type="text" value="7~8컵" readonly></input>
+                        <input class="question_v2" id="q_drink5" type="text" value="9컵 혹은 그 이상" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_drink" name="q_drink" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton8" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton8" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea9-------------------------- -->
+                <div class="bottomarea" id="bottomarea9" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar9"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container9">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">4/17</p>
+                    <p class="q_text2_v2">일주일동안<br>아침 식사를 몇 번 하셨나요?</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_breakfast1" type="text" value="0회" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_breakfast2" type="text" value="1~2회" readonly></input>
+                        <input class="question_v2" id="q_breakfast3" type="text" value="3~4회" readonly></input>
+                        <input class="question_v2" id="q_breakfast4" type="text" value="5~7회" readonly></input>
+                        <input class="question_v2" id="q_breakfast5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_breakfast" name="q_breakfast" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton9" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton9" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea10-------------------------- -->
+                <div class="bottomarea" id="bottomarea10" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar10"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container10">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">5/17</p>
+                    <p class="q_text2_v2">일주일동안<br>점심 식사를 몇 번 하셨나요?</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_lunch1" type="text" value="0회" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_lunch2" type="text" value="1~2회" readonly></input>
+                        <input class="question_v2" id="q_lunch3" type="text" value="3~4회" readonly></input>
+                        <input class="question_v2" id="q_lunch4" type="text" value="5~7회" readonly></input>
+                        <input class="question_v2" id="q_lunch5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_lunch" name="q_lunch" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton10" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton10" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea11-------------------------- -->
+                <div class="bottomarea" id="bottomarea11" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar11"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container11">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">6/17</p>
+                    <p class="q_text2_v2">일주일동안<br>저녁 식사를 몇 번 하셨나요?</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_dinner1" type="text" value="0회" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_dinner2" type="text" value="1~2회" readonly></input>
+                        <input class="question_v2" id="q_dinner3" type="text" value="3~4회" readonly></input>
+                        <input class="question_v2" id="q_dinner4" type="text" value="5~7회" readonly></input>
+                        <input class="question_v2" id="q_dinner5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_dinner" name="q_dinner" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton11" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton11" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea12-------------------------- -->
+                <div class="bottomarea" id="bottomarea12" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar12"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container12">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">7/17</p>
+                    <p class="q_text2_v1">담배를 피시나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_smoke1" type="text" value="담배를 핍니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_smoke2" type="text" value="담배를 피지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_smoke3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_smoke4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_smoke5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_smoke" name="q_smoke" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton12" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton12" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea13-------------------------- -->
+                <div class="bottomarea" id="bottomarea13" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar13"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container13">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">8/17</p>
+                    <p class="q_text2_v1">술을 마시나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_alcohol1" type="text" value="술을 마십니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_alcohol2" type="text" value="술을 마시지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_alcohol3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_alcohol4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_alcohol5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_alcohol" name="q_alcohol" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton13" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton13" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+
+                <div class="bottomarea" id="bottomarea13_1" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar13"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container13">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">8/17</p>
+                    <p class="q_text2_v1">술 마시는 주기를 선택해주세요</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_alcohol_time1" type="text" value="한 달에 1번 이하" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_alcohol_time2" type="text" value="한 달에 2~4번" readonly></input>
+                        <input class="question_v1" id="q_alcohol_time3" type="text" value="일주일에 2~3번" readonly></input>
+                        <input class="question_v1" id="q_alcohol_time4" type="text" value="일주일에 4번 이상" readonly></input>
+                        <input class="question_v1" id="q_alcohol_time5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_alcohol_time" name="q_alcohol_time" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton13_1" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton13_1" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+
+                <div class="bottomarea" id="bottomarea13_2" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar13"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container13">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">8/17</p>
+                    <p class="q_text2_v2">술을 보통 어느 정도 마시나요?<br>(생맥주 500cc = 1.3잔)</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_alcohol_quant1" type="text" value="1~2잔" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_alcohol_quant2" type="text" value="3~4잔" readonly></input>
+                        <input class="question_v2" id="q_alcohol_quant3" type="text" value="5~6잔" readonly></input>
+                        <input class="question_v2" id="q_alcohol_quant4" type="text" value="7~9잔" readonly></input>
+                        <input class="question_v2" id="q_alcohol_quant5" type="text" value="10잔" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_alcohol_quant" name="q_alcohol_quant" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton13_2" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton13_2" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea14-------------------------- -->
+                <div class="bottomarea" id="bottomarea14" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar14"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container14">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">9/17</p>
+                    <p class="q_text2_v1">평소에 피곤함을 많이 느끼시나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_tired1" type="text" value="매우 그렇습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_tired2" type="text" value="조금 그렇습니다" readonly></input>
+                        <input class="question_v1" id="q_tired3" type="text" value="보통입니다" readonly></input>
+                        <input class="question_v1" id="q_tired4" type="text" value="그렇지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_tired5" type="text" value="매우 그렇지 않습니다" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_tired" name="q_tired" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton14" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton14" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea15-------------------------- -->
+                <div class="bottomarea" id="bottomarea15" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar15"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container15">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">10/17</p>
+                    <p class="q_text2_v2">평소 해당되는<br>수면시간을 선택해주세요</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_sleep1" type="text" value="7~8시간 혹은 그 이상" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_sleep2" type="text" value="5~6시간" readonly></input>
+                        <input class="question_v2" id="q_sleep3" type="text" value="3~4시간" readonly></input>
+                        <input class="question_v2" id="q_sleep4" type="text" value="1~2시간" readonly></input>
+                        <input class="question_v2" id="q_sleep5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_sleep" name="q_sleep" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton15" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton15" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea16-------------------------- -->
+                <div class="bottomarea" id="bottomarea16" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar16"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container16">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">11/17</p>
+                    <p class="q_text2_v1">평소에 스트레스를 많이 받으시나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_stress1" type="text" value="매우 그렇습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_stress2" type="text" value="조금 그렇습니다" readonly></input>
+                        <input class="question_v1" id="q_stress4" type="text" value="그렇지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_stress5" type="text" value="매우 그렇지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_stress3" type="text" value="보통입니다" readonly
+                            style="visibility: hidden;margin-bottom:0px;"></input>
+                        <input id="q_stress" name="q_stress" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton16" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton16" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea17-------------------------- -->
+                <div class="bottomarea" id="bottomarea17" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar17"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container17">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">12/17</p>
+                    <p class="q_text2_v1">우울증 진단을 받은 경험이 있나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_depress1" type="text" value="진단을 받은 경험이 있습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_depress2" type="text" value="진단을 받은 경험이 없습니다" readonly></input>
+                        <input class="question_v1" id="q_depress3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_depress4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="q_depress5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_depress" name="q_depress" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton17" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton17" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea18-------------------------- -->
+                <div class="bottomarea" id="bottomarea18" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar18"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container18">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">13/17</p>
+                    <p class="q_text2_v1">건강한가요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="q_healthy1" type="text" value="매우 그렇습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="q_healthy2" type="text" value="조금 그렇습니다" readonly></input>
+                        <input class="question_v1" id="q_healthy3" type="text" value="보통입니다" readonly></input>
+                        <input class="question_v1" id="q_healthy4" type="text" value="그렇지 않습니다" readonly></input>
+                        <input class="question_v1" id="q_healthy5" type="text" value="매우 그렇지 않습니다" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_healthy" name="q_healthy" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton18" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton18" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea19-------------------------- -->
+                <div class="bottomarea" id="bottomarea19" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar19"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container19">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v2">14/17</p>
+                    <p class="q_text2_v2">지난 1년간 항생제/항바이러스제<br>복용 경험이 있나요?</p>
+                    <div class="question_container_v2">
+                        <input class="question_v2" id="q_cancer1" type="text" value="복용했습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v2" id="q_cancer2" type="text" value="복용하지 않았습니다" readonly></input>
+                        <input class="question_v2" id="q_cancer3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v2" id="q_cancer4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v2" id="q_cancer5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="q_antibiotic" name="q_antibiotic" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton19" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton19" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea20-------------------------- -->
+                <div class="window" id="window_v3" style="display: none;">
+                    <div class="toparea_v3">
+                        <p class="titletext">학식쓰</p>
+                    </div>
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar20"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container20">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+                    <p class="q_text1_v3">15/17</p>
+                    <p class="q_text2_v3">현재 나타나는 증상이 있으면<br>모두 선택해주세요<br>(중복 선택 가능합니다)</p>
+                    <div class="question_container_v3">
+                        <input class="question_v3" id="q_state1" type="text" value="해당 사항 없습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v3" id="q_state2" type="text" value="발진" readonly></input>
+                        <input class="question_v3" id="q_state3" type="text" value="안구 건조증" readonly></input>
+                        <input class="question_v3" id="q_state4" type="text" value="체중이 급격히 빠짐" readonly></input>
+                        <input class="question_v3" id="q_state5" type="text" value="발가락 저림" readonly></input>
+                        <input class="question_v3" id="q_state6" type="text" value="혈뇨/혈변" readonly></input>
+                        <input class="question_v3" id="q_state7" type="text" value="메스꺼움" readonly></input>
+                        <input class="question_v3" id="q_state8" type="text" value="식욕 상실" readonly></input>
+                        <input class="question_v3" id="q_state9" type="text" value="홍조" readonly></input>
+                        <input class="question_v3" id="q_state10" type="text" value="기억력 저하" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_state" name="q_state" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container_v3">
+                        <input class="back_button" id="backbutton20" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton20" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea21-------------------------- -->
+                <div class="window" id="window_v4" style="display: none;">
+                    <div class="toparea_v4">
+                        <p class="titletext">학식쓰</p>
+                    </div>
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar21"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container21">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+                    <p class="q_text1_v4">16/17</p>
+                    <p class="q_text2_v4">현재 앓고 있는 질환을<br>모두 선택해주세요<br>(중복 선택 가능합니다)</p>
+                    <div class="question_container_v4">
+                        <input class="question_v4" id="q_disease1" type="text" value="해당 사항 없습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v4" id="q_disease2" type="text" value="고혈압" readonly></input>
+                        <input class="question_v4" id="q_disease3" type="text" value="당뇨" readonly></input>
+                        <input class="question_v4" id="q_disease4" type="text" value="고지혈증" readonly></input>
+                        <input class="question_v4" id="q_disease5" type="text" value="갑상선 질환" readonly></input>
+                        <input class="question_v4" id="q_disease6" type="text" value="빈혈" readonly></input>
+                        <input class="question_v4" id="q_disease7" type="text" value="암" readonly
+                            style="margin-bottom: 0px;"></input>
+                        <input id="q_disease_none" name="q_disease_none" value=0 type="number" style="display:none;">
+                        <input id="q_disease_hypertension" name="q_disease_hypertension" value=0 type="number"
+                            style="display:none;">
+                        <input id="q_disease_diabetes" name="q_disease_diabetes" value=0 type="number" style="display:none;">
+                        <input id="q_disease_hyperlipidemia" name="q_disease_hyperlipidemia" value=0 type="number"
+                            style="display:none;">
+                        <input id="q_disease_thyroid" name="q_disease_thyroid" value=0 type="number" style="display:none;">
+                        <input id="q_disease_anemia" name="q_disease_anemia" value=0 type="number" style="display:none;">
+                        <input id="q_disease_cancer" name="q_disease_cancer" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container_v4">
+                        <input class="back_button" id="backbutton21" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton21" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea22-------------------------- -->
+                <div class="window" id="window_v5" style="display: none;">
+                    <div class="toparea_v5">
+                        <p class="titletext">학식쓰</p>
+                    </div>
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar22"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container22">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+                    <p class="q_text1_v5">17/17</p>
+                    <p class="q_text2_v5">현재 복용 중인 의약품을<br>모두 선택해주세요<br>(중복 선택 가능합니다)</p>
+                    <div class="question_container_v5">
+                        <input class="question_v5" id="q_medicine1" type="text" value="해당 사항 없습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v5" id="q_medicine2" type="text" value="발진" readonly></input>
+                        <input class="question_v5" id="q_medicine3" type="text" value="안구 건조증" readonly></input>
+                        <input class="question_v5" id="q_medicine4" type="text" value="체중이 급격히 빠짐" readonly></input>
+                        <input class="question_v5" id="q_medicine5" type="text" value="발가락 저림" readonly></input>
+                        <input class="question_v5" id="q_medicine6" type="text" value="혈뇨/혈변" readonly></input>
+                        <input class="question_v5" id="q_medicine7" type="text" value="메스꺼움" readonly></input>
+                        <input class="question_v5" id="q_medicine8" type="text" value="식욕 상실" readonly></input>
+                        <input class="question_v5" id="q_medicine9" type="text" value="홍조" readonly></input>
+                        <input class="question_v5" id="q_medicine10" type="text" value="기억력 저하" readonly></input>
+                        <input class="question_v5" id="q_medicine11" type="text" value="해당 사항 없습니다" readonly></input>
+                        <input class="question_v5" id="q_medicine12" type="text" value="발진" readonly></input>
+                        <input class="question_v5" id="q_medicine13" type="text" value="안구 건조증" readonly></input>
+                        <input class="question_v5" id="q_medicine14" type="text" value="체중이 급격히 빠짐" readonly></input>
+                        <input class="question_v5" id="q_medicine15" type="text" value="발가락 저림" readonly></input>
+                        <input class="question_v5" id="q_medicine16" type="text" value="혈뇨/혈변" readonly></input>
+                        <input class="question_v5" id="q_medicine17" type="text" value="메스꺼움" readonly></input>
+                        <input class="question_v5" id="q_medicine18" type="text" value="식욕 상실" readonly
+                            style="margin-bottom:0px;"></input>
+                        <input id="q_medicine" name="q_medicine" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container_v5">
+                        <input class="back_button" id="backbutton22" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton22" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea23-------------------------- -->
+                <div class="bottomarea" id="bottomarea23" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar22"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container22">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">♀︎</p>
+                    <p class="q_text2_v1">임신 및 모유수유를 하고 있나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="qf_pregnant1" type="text" value="임신하고 있습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="qf_pregnant2" type="text" value="모유 수유를 하고 있습니다"
+                            readonly></input>
+                        <input class="question_v1" id="qf_pregnant3" type="text" value="둘 다 하고 있습니다" readonly></input>
+                        <input class="question_v1" id="qf_pregnant4" type="text" value="둘 다 하고 있지 않습니다"
+                            readonly></input>
+                        <input class="question_v1" id="qf_pregnant5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="qf_pregnant" name="qf_pregnant" value=0 type="number" style="display:none;">
+                        <input id="qf_breastfeed" name="qf_breastfeed" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton23" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton23" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea24-------------------------- -->
+                <div class="bottomarea" id="bottomarea24" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar22"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container22">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">♀︎</p>
+                    <p class="q_text2_v1">폐경 진단을 받았나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="qf_menopause1" type="text" value="진단 받았습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="qf_menopause2" type="text" value="진단 받지 않았습니다" readonly></input>
+                        <input class="question_v1" id="qf_menopause3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="qf_menopause4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="qf_menopause5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="qf_menopause" name="qf_menopause" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton24" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton24" type="button" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------bottomarea25-------------------------- -->
+                <div class="bottomarea" id="bottomarea25" style="height: 0px; display: none;">
+                    <div class="progress_bar_container">
+                        <div class="progress_bar" id="progress_bar22"></div>
+                    </div>
+                    <div class="progress_bar_face_container" id="progress_bar_face_container22">
+                        <img class="progress_bar_face" src="../img/bar_face.png" />
+                    </div>
+
+                    <p class="q_text1_v1">♀︎</p>
+                    <p class="q_text2_v1">경구 피임약을 복용하고 있나요?</p>
+                    <div class="question_container_v1">
+                        <input class="question_v1" id="qf_birthpill1" type="text" value="복용하고 있습니다" readonly
+                            style="margin-top: 0px;"></input>
+                        <input class="question_v1" id="qf_birthpill2" type="text" value="복용하고 있지 않습니다" readonly></input>
+                        <input class="question_v1" id="qf_birthpill3" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="qf_birthpill4" type="text" value="죽음" readonly
+                            style="visibility: hidden;"></input>
+                        <input class="question_v1" id="qf_birthpill5" type="text" value="죽음" readonly
+                            style="visibility: hidden; margin-bottom:0px;"></input>
+                        <input id="qf_birthpill" name="qf_birthpill" value=0 type="number" style="display:none;">
+                    </div>
+
+                    <div class="button_container">
+                        <input class="back_button" id="backbutton25" type="button" value="이전" readonly></input>
+                        <input class="go_button" id="gobutton25" type="submit" value="다음" readonly></input>
+                    </div>
+                </div>
+                <!-- --------------------------end-------------------------- -->
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('form').on('submit', function (event) {
+                event.preventDefault();
+                // It returns a array of object 
+
+
+                let userinfo = $(this).serializeArray();
+                let user = {};
+                userinfo.forEach((value) => {
+                    // Dynamically create an object
+                    user[value.name] = value.value;
+                });
+                console.log(user);
+                let url = "https://reqres.in/api/users";
+                $.ajax({
+                    method: "POST",
+                    url: url,
+                    data: user
+                }).done(function (msg) {
+
+                    // When the request is successful
+                    location.href="../result/kalium/kalium.html";
+                }).fail(function (err, textstatus, error) {
+                    $('span').text(textstatus);
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>
